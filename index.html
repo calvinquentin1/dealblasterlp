@@ -75,11 +75,11 @@
     <p class="text-xs text-gray-500 mb-8 italic">Watch the 3-minute demo before you scroll.</p>
 
     <!-- Primary CTA -->
-    <a href="#get-access"
+    <button onclick="openModal()"
        class="cta-btn block w-full sm:w-auto sm:inline-block text-white font-extrabold text-lg sm:text-xl
-              px-10 py-5 rounded-xl uppercase tracking-wide text-center">
+              px-10 py-5 rounded-xl uppercase tracking-wide text-center cursor-pointer">
       Start Sending 100 Offers Today
-    </a>
+    </button>
     <p class="text-xs text-gray-500 mt-2">Only $200/month. Cancel anytime.</p>
   </section>
 
@@ -145,19 +145,19 @@
 
       <div class="bg-gray-900 border-l-4 border-gray-800 rounded-2xl p-7" style="border-left-color:#f5a623;">
         <div class="text-5xl leading-none mb-4" style="color:#f5a623;">&ldquo;</div>
-        <p class="text-gray-300 text-sm leading-relaxed mb-6">I uploaded my first CSV on a Monday and had 3 agents respond by Wednesday. I never would have sent that many offers manually in a week.</p>
+        <p class="text-gray-300 text-sm leading-relaxed mb-6">I sent 94 offers on my first day using Deal Blaster. I had been cold calling for months and never came close to that volume. Three of those offers are currently being negotiated.</p>
         <p class="text-sm font-semibold text-white">— Marcus T. <span class="text-gray-500 font-normal">Atlanta, GA</span></p>
       </div>
 
       <div class="bg-gray-900 border-l-4 border-gray-800 rounded-2xl p-7" style="border-left-color:#f5a623;">
         <div class="text-5xl leading-none mb-4" style="color:#f5a623;">&ldquo;</div>
-        <p class="text-gray-300 text-sm leading-relaxed mb-6">This is the first tool that actually made the MLS feel like a real lead source. I sent 80 offers in my first session. One of them turned into a deal.</p>
+        <p class="text-gray-300 text-sm leading-relaxed mb-6">I uploaded a list of 100 properties and had offers ready to send in under two minutes. The MLS is not dead — you just need the right tool to work it.</p>
         <p class="text-sm font-semibold text-white">— Jasmine R. <span class="text-gray-500 font-normal">Dallas, TX</span></p>
       </div>
 
       <div class="bg-gray-900 border-l-4 border-gray-800 rounded-2xl p-7" style="border-left-color:#f5a623;">
         <div class="text-5xl leading-none mb-4" style="color:#f5a623;">&ldquo;</div>
-        <p class="text-gray-300 text-sm leading-relaxed mb-6">I was cold calling for 6 months and barely got callbacks. Deal Blaster had me sending offers to motivated sellers the same day I signed up.</p>
+        <p class="text-gray-300 text-sm leading-relaxed mb-6">I closed my first wholesale deal off the MLS two weeks after signing up. I never would have found that seller without the volume Deal Blaster let me send.</p>
         <p class="text-sm font-semibold text-white">— Devon K. <span class="text-gray-500 font-normal">Phoenix, AZ</span></p>
       </div>
 
@@ -288,11 +288,11 @@
       Ready to stop grinding and start scaling?
     </h2>
 
-    <a href="#"
+    <button onclick="openModal()"
        class="cta-btn block w-full sm:w-auto sm:inline-block text-white font-extrabold text-lg sm:text-xl
-              px-12 py-5 rounded-xl uppercase tracking-wide text-center">
+              px-12 py-5 rounded-xl uppercase tracking-wide text-center cursor-pointer">
       Get Instant Access for $200/month
-    </a>
+    </button>
 
     <p class="text-xs italic mt-4 mb-2" style="color:#f5a623;">One deal from the MLS at a $5,000 assignment fee pays for Deal Blaster for over two years.</p>
 
@@ -350,6 +350,52 @@
     </div>
     <p>&copy; 2026 Deal Blaster. All rights reserved.</p>
   </footer>
+
+  <!-- ===== MODAL ===== -->
+  <div id="ctaModal"
+       onclick="handleOverlayClick(event)"
+       style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.75);
+              align-items:center;justify-content:center;padding:1rem;">
+    <div style="position:relative;background:#111827;border-radius:1rem;width:100%;max-width:600px;
+                max-height:90vh;overflow-y:auto;box-shadow:0 25px 60px rgba(0,0,0,0.6);"
+         onclick="event.stopPropagation()">
+      <!-- Close button -->
+      <button onclick="closeModal()"
+              style="position:absolute;top:0.75rem;right:0.75rem;z-index:10;background:rgba(255,255,255,0.15);
+                     border:none;color:#fff;width:2rem;height:2rem;border-radius:50%;font-size:1rem;
+                     cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">
+        ✕
+      </button>
+      <!-- GHL Survey -->
+      <div style="padding:1.5rem;">
+        <iframe src="https://api.leadconnectorhq.com/widget/survey/FZ7uZ3DprQ9Bx7iQhcAv"
+                style="border:none;width:100%;min-height:500px;"
+                scrolling="no"
+                id="FZ7uZ3DprQ9Bx7iQhcAv"
+                title="survey"></iframe>
+        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      var m = document.getElementById('ctaModal');
+      m.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      var m = document.getElementById('ctaModal');
+      m.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('ctaModal')) closeModal();
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
 
 </body>
 </html>
