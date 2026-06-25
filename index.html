@@ -2,6 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2079208553033639');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2079208553033639&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- GoFunnel Tracking -->
+  <script src="https://app.gofunnel.ai/api/tracking/script/b0131c9c-3c22-4545-a8b5-d2bef5c949aa"></script>
+  <script>
+  (function () {
+    var attempts = 0;
+    var maxAttempts = 20;
+    var cookieDomain = ".dealsniper.ai";
+
+    function setCookie(name, value) {
+      document.cookie =
+        name + "=" + encodeURIComponent(value) +
+        "; Domain=" + cookieDomain +
+        "; Path=/" +
+        "; Max-Age=2592000" +
+        "; Secure" +
+        "; SameSite=Lax";
+    }
+
+    function getCookie(name) {
+      var escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      var match = document.cookie.match(new RegExp("(^|;\\s)" + escaped + "=([^;]*)"));
+      return match ? decodeURIComponent(match[2]) : "";
+    }
+
+    function setStoredValue(name, value) {
+      try {
+        localStorage.setItem(name, value);
+      } catch (e) {}
+    }
+
+    function getStoredValue(name) {
+      try {
+        return localStorage.getItem(name) || "";
+      } catch (e) {
+        return "";
+      }
+    }
+
+    function syncValue(name, value) {
+      if (!value) return;
+      setStoredValue(name, value);
+      setCookie(name, value);
+    }
+
+    function restoreFromStorage(name) {
+      var cookieValue = getCookie(name);
+      if (cookieValue) return;
+
+      var storedValue = getStoredValue(name);
+      if (storedValue) {
+        setCookie(name, storedValue);
+      }
+    }
+
+    function trySetCookies() {
+      attempts += 1;
+
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var fbclid = params.get("fbclid");
+        if (fbclid) {
+          syncValue("fbclid", fbclid);
+        } else {
+          restoreFromStorage("fbclid");
+        }
+      } catch (e) {
+        restoreFromStorage("fbclid");
+      }
+
+      if (typeof window.cometToken === "function") {
+        var token = window.cometToken();
+        if (token) {
+          syncValue("comet_token", token);
+          return;
+        }
+      }
+
+      restoreFromStorage("comet_token");
+
+      if (attempts < maxAttempts) {
+        setTimeout(trySetCookies, 500);
+      }
+    }
+
+    trySetCookies();
+  })();
+  </script>
+  <!-- End GoFunnel Tracking -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Deal Blaster — Send 100 Creative Finance Offers a Day</title>
   <script src="https://cdn.tailwindcss.com"></script>
